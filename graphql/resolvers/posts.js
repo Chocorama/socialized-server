@@ -68,10 +68,8 @@ module.exports = {
       const found = post.likes.find((p) => p.username === username);
 
       if (post && found) {
-        // already have a like, remove it
         post.likes = post.likes.filter((p) => p.username !== username);
       } else {
-        // add a like to array
         post.likes = [
           ...post.likes,
           {

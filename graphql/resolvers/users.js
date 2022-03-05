@@ -38,14 +38,12 @@ module.exports = {
         throw new UserInputError('User not found', { errors });
       }
 
-      //compare to bcrypted password in DB
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
         errors.wrongPassword = 'Wrong credentials';
         throw new UserInputError('Wrong credentials', { errors });
       }
 
-      //found user and password is correct lets issue a token
       const token = generateToken(user);
 
       return {
